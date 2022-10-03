@@ -37,7 +37,7 @@ A- Bloquear o Unload das ferramentas de kernel-mode para evitar bypass via coman
 
 B- Melhoria da qualidade dos decoys: nomes diferentes um dos outros e filetypes diferentes. Além da diminuição de quantos decoys podem ser alterados antes que o processo seja considerado suspeito.
 
-C- (Díficil, mas tentaremos): fazer algum sistema que simule o Group Id do Linux, para que seja possível matar a árvore de processos do Ransomware mesmo que no meio desta haja processos já mortos.
+C- (Difícil, mas tentaremos): fazer algum sistema que simule o Group Id do Linux, para que seja possível matar a árvore de processos do Ransomware mesmo que no meio desta haja processos já mortos.
 
 D- O Backup até agora só é feito para arquivos que estão em uma lista de tipos de arquivo que o user quer proteger. Iremos aumentar essa lista de 12 para 100+ ou simplesmente a substituir por uma lista de filetypes que o user NÃO quer proteger.
 
