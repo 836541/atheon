@@ -39,7 +39,7 @@ C- (Díficil, mas tentaremos): fazer algum sistema que simule o Group Id do Linu
 
 D- O Backup até agora só é feito para arquivos que estão em uma lista de tipos de arquivo que o user quer proteger. Iremos aumentar essa lista de 12 para 100+ ou simplesmente a substituir por uma lista de filetypes que o user NÃO quer proteger.
 
-E- Backup atualizado (atualmente se já há um arquivo com o mesmo nome, não é feito o backup nem atualização), feito caso a última modificação que o arquivo sofreu já passou de 1 minuto.
+E- Atualização dos arquivos backupados (atualmente se já há um arquivo com o mesmo nome, não é feito o backup nem atualização), feito caso a última modificação que o arquivo sofreu já passou de 1 minuto.
 
 F- Código menos Hardcoded: atualmente o código possui alguns hardcodes, por exemplo o backup do Sacerdote ser feito somente na pasta C:\sacerdotebackupdir.
 
