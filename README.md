@@ -19,7 +19,7 @@ Leonardo, Tarek, Thiago, Matheus Santos e João. 1TDCA.
 
 Todas ferramentas, salvo alguns ajustes, estão da mesma maneira que foram usadas na quarta mentoria. Os upgrades estão sendo feitos em OFF.
 Por exemplo, as ferramentas de kernel-mode, em off, estão tendo seu unload desativado para que um atacante não consiga dar bypass através de unloads no filtermanager.
-Nesse github, há uma ferramenta que foi apresentada na terceira mentoria, o "shadowcloack", o qual trocava as extensões dos arquivos do sistema sem alterar a funcionalidade dos filetypes, de modo que Ransomwares que atacam através de whitelist de extensões não funcionassem, mas essa ferramenta foi descontinuada depois de críticas obtidas na apresentação a qual foi mostrada.
+Há uma ferramenta que foi apresentada na terceira mentoria, o "shadowcloack", o qual trocava as extensões dos arquivos do sistema sem alterar a funcionalidade dos filetypes, de modo que Ransomwares que atacam através de whitelist de extensões não funcionassem, mas essa ferramenta foi descontinuada depois de críticas obtidas na apresentação a qual foi mostrada.
 
 A- Beholder: User-Mode Memory Scanner. É uma ferramenta de detecção via análise dinâmica, leva de 1-12s para encontrar o Ransomware caso o mesma possua strings de deleção do backup shadow do windows em seu código. Contudo, por ser user-mode é extremamente vulnerável, então no final é apenas uma ferramenta extra do nosso grupo.
 
