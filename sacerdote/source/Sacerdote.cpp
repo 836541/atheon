@@ -28,7 +28,7 @@ NTSTATUS backupFile(UNICODE_STRING sourcePath, UNICODE_STRING destPath, PFLT_INS
     ULONG len;
     PVOID buffer;
     IO_STATUS_BLOCK io_status;
-    LARGE_INTEGER offset;
+    LARGE_INTEGER offset = {0};
 
     InitializeObjectAttributes(&sourceOA, &sourcePath, OBJ_CASE_INSENSITIVE | OBJ_KERNEL_HANDLE, nullptr, nullptr);
     InitializeObjectAttributes(&destOA, &destPath, OBJ_CASE_INSENSITIVE | OBJ_KERNEL_HANDLE, nullptr, nullptr);
