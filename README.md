@@ -33,7 +33,7 @@ C- Sacerdote: Kernel-mode Local Backup. É uma ferramenta que realiza backup num
 
 -------------------------------------------------------------------------------------
 
-0- Há um bug em que arquivos.pdf estão sofrendo backup de 0KBs na minha máquina principal, embora na VM esteja normal, será investigado também.
+0- Há um bug em que arquivos.pdf estão sofrendo backup de 0KBs na minha máquina principal, embora na VM esteja normal. Já foi descoberto o problema e está sendo resolvido.
 
 A- Bloquear o Unload das ferramentas de kernel-mode para evitar bypass via comandos como "fltmc unload" ou apis como "FltUnregisterFilter". Dessa forma, o unloading vai começar a ser feito através de clients user-mode.
 
