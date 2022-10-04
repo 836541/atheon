@@ -17,7 +17,7 @@ Leonardo, Tarek, Thiago, Matheus Santos e João. 1TDCA.
 
 ---------------------------------------------------------
 
-Todas ferramentas, salvo alguns ajustes, estão da mesma maneira que foram usadas na quarta mentoria. Os upgrades estão sendo feitos em OFF.
+Todas ferramentas estão da mesma maneira que foram usadas na quarta mentoria, exceto o Sacerdote, mas em sua pasta há a versão antiga também. Os upgrades estão sendo feitos em OFF.
 Por exemplo, as ferramentas de kernel-mode, em off, estão tendo seu unload desativado para que um atacante não consiga dar bypass através de unloads no filtermanager.
 Há uma ferramenta que foi apresentada na terceira mentoria, o "shadowcloack", o qual trocava as extensões dos arquivos do sistema sem alterar a funcionalidade dos filetypes, de modo que Ransomwares que atacam através de whitelist de extensões não funcionassem, mas essa ferramenta foi descontinuada depois de críticas obtidas na apresentação a qual foi mostrada.
 
