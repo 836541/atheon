@@ -4,7 +4,7 @@
 
 
 const int ListSize = 12;
-WCHAR* Extensions[ListSize] = { L".mp3", L".pdf", L".rtf", L".docx", L".pptx", L".mp4", L".exe", L".png", L".rar", L".zip", L".jpeg", L".jpg" };
+WCHAR* Extensions[ListSize] = { L"mp3", L"pdf", L"rtf", L"docx", L"pptx", L"mp4", L"exe", L"png", L"rar", L"zip", L"jpeg", L"jpg" };
 int MaxSize = 30000;
 int Protection = 2;
 PFLT_FILTER gFilterHandle;
@@ -569,7 +569,7 @@ FLT_PREOP_CALLBACK_STATUS PreCreate(PFLT_CALLBACK_DATA Data, PCFLT_RELATED_OBJEC
     return FLT_PREOP_SUCCESS_NO_CALLBACK;
 }
 
-
+// PreSet não foi utilizado 
 FLT_PREOP_CALLBACK_STATUS PreSetInformation(PFLT_CALLBACK_DATA Data, PCFLT_RELATED_OBJECTS FltObjects, PVOID* CompletionContext) {
     UNREFERENCED_PARAMETER(CompletionContext);
     NTSTATUS status;
@@ -699,7 +699,7 @@ FLT_PREOP_CALLBACK_STATUS PreRead(PFLT_CALLBACK_DATA Data, PCFLT_RELATED_OBJECTS
             break;
         }
 
-        if (!isBackupable(&fileNameInfo->Name)) {
+        if (!isBackupable(&fileNameInfo->Extension)) {
             FltReleaseFileNameInformation(fileNameInfo);
             return FLT_PREOP_SUCCESS_NO_CALLBACK;
         }
@@ -753,7 +753,7 @@ FLT_PREOP_CALLBACK_STATUS PreRead(PFLT_CALLBACK_DATA Data, PCFLT_RELATED_OBJECTS
             ExFreePool(destNameBuffer);
             break;
         }
-        // KdPrint(("Success backup PRE_READ: %wZ \n", &NameString));
+        KdPrint(("Success backup PRE_READ: %wZ \n", &NameString));
         FltReleaseFileNameInformation(fileNameInfo);
         ExFreePool(ObjectNameInformation);
         ExFreePool(NameBuffer);
@@ -761,6 +761,8 @@ FLT_PREOP_CALLBACK_STATUS PreRead(PFLT_CALLBACK_DATA Data, PCFLT_RELATED_OBJECTS
     } while (false);
     return FLT_PREOP_SUCCESS_NO_CALLBACK;
 }
+
+// Pre Write foi removido nessa versão
 FLT_PREOP_CALLBACK_STATUS PreWrite(PFLT_CALLBACK_DATA Data, PCFLT_RELATED_OBJECTS FltObjects, PVOID* CompletionContext) {
     UNREFERENCED_PARAMETER(CompletionContext);
     NTSTATUS status;
