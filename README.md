@@ -3,6 +3,8 @@ Anti-Ransomware Toolkit.
 
 https://www.youtube.com/watch?v=qklVNKxWNHw (COMERCIAL)
 
+ps.: GUARDIAN é a interface gráfica em desenvolvimento.
+
 --------------------------------------------
 
 0 - Integrantes
