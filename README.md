@@ -1,59 +1,37 @@
-# atheon
-Anti-Ransomware Toolkit.
-
-https://www.youtube.com/watch?v=qklVNKxWNHw (COMERCIAL)
-
-ps.: GUARDIAN é a interface gráfica em desenvolvimento.
-
---------------------------------------------
-
-0 - Integrantes
-
-------------------------------------------------------
-
-Leonardo, Tarek, Thiago, Matheus Santos e João. 1TDCA.
-
--------------------------------------------------------
-
-1- Ferramentas
+1- TOOLS
 
 ---------------------------------------------------------
 
-Todas ferramentas estão da mesma maneira que foram usadas na quarta mentoria, salvo alguns ajustes de qualidade de vida no Sacerdote. Os upgrades estão sendo feitos em OFF.
-Por exemplo, as ferramentas de kernel-mode, em off, estão tendo seu unload desativado para que um atacante não consiga dar bypass através de unloads no filtermanager.
-Há uma ferramenta que foi apresentada na terceira mentoria, o "shadowcloack", o qual trocava as extensões dos arquivos do sistema sem alterar a funcionalidade dos filetypes, de modo que Ransomwares que atacam através de whitelist de extensões não funcionassem, mas essa ferramenta foi descontinuada depois de críticas obtidas na apresentação a qual foi mostrada.
+A- Beholder: User-Mode Memory Scanner. A Memory Scanner that detects Windows Shadow Backup Deletion and Ransomware's Extension Whitelist strings in a process' virtual memory. Not very effective because it's full User-Mode. However, a Kernel-Mode version will be developed soon.
 
-A- Beholder: User-Mode Memory Scanner. É uma ferramenta de detecção via análise dinâmica, leva de 1-12s para encontrar o Ransomware caso o mesma possua strings de deleção do backup shadow do windows em seu código. Contudo, por ser user-mode é extremamente vulnerável e, por conta da lentidão, não mata o Ransomware rápido o suficiente, então no final é apenas uma ferramenta extra do nosso grupo.
+B- Behelit: Kernel-Mode Honeypot (a tool which you spread decoy files so when they are encrypted you can detect a possible ransomware). Better than most honeypots because: 1- Kernel Mode (harder to evade and faster), 2- Decoys are immovable objects (can't be renamed, moved, deleted ... so false positives dont happen), 3- Decoys start with "aa" or "zz" substring so win32 apis list them quicker, 4- Entropy/Filetype/Fuzzy Hash/Header etc... are not used as a way to detect if a file is encrypted or not, because its super easy to bypass these type of mechanisms, rather than that the tool uses write/delete irps, which are operations that all crpyto ransomware needs to do.
 
-B- Behelit: Kernel-Mode Honeypot. É uma ferramenta de detecção via análise comportamental. Possui uma série de melhorias em relação aos honeypots tradicionais, como: kernel-mode para evitar bypasses a nível de usuário, decoys com prioridade de aparecimento na listagem de arquivos (win apis vão do A ao Z ou vice-versa), decoys que não podem ser movidos, deletados, renomeados etc... tudo para que seja evitado falso-positivos e intervenções do usuário. Espalhando apenas 6 pastas decoys no filesystem resultou na detecção de ransomwares em uma média de 2-3s. 
-
-C- Sacerdote: Kernel-mode Local Backup. É uma ferramenta que realiza backup numa pasta local (protegida de qualquer acesso que não seja Kernel-Mode). Toda operação de Read é interceptada e, somente quando o backup é concluido, a operação é concluida, de modo que seja impossível uma criptografia ocorrer antes do backup. Por enquanto o backup é feito com flag de CREATE, o que faz com que não haja sincronização de backup.
+C- Sacerdote: Kernel-mode Local Backup. Backup files to a kernel-mode protected folder everytime a read operation happens. Safer than most local backup solutions because the malware commonly needs to be a rootkit to access the kernel-mode folder instead of just using lateral movement and getting privileges. Also, backuping files only before read operations also means that the backup doesnt need as large as other solutions.
 
 -------------------------------------------------------------------------------------
 
-2- Melhorias Futuras para as atuais ferramentas
+2- UPGRADES
 
 -------------------------------------------------------------------------------------
 
-0- Há um bug em que arquivos.pdf estão sofrendo backup de 0KBs na minha máquina principal, embora na VM esteja normal. Já foi descoberto o problema e está sendo resolvido.
+0- Sacerdote doesnt backup PDF in all systems. I already know how to fix it, just need time.
 
-A- Bloquear o Unload das ferramentas de kernel-mode para evitar bypass via comandos como "fltmc unload" ou apis como "FltUnregisterFilter". Dessa forma, o unloading vai começar a ser feito através de clients user-mode.
+A- Blocking traditional Driver-Unload.
 
-B- Melhoria da qualidade dos decoys: nomes diferentes um dos outros e filetypes diferentes. Além da diminuição de quantos decoys podem ser alterados antes que o processo seja considerado suspeito.
+B- Making a Decoy Generator
 
-C- (Difícil, mas tentaremos): fazer algum sistema que simule o Group Id do Linux, para que seja possível matar a árvore de processos do Ransomware mesmo que no meio desta haja processos já mortos.
+C- Tracking the Group Id of a Process so the entire tree can be killed.
 
-D- O Backup até agora só é feito para arquivos que estão em uma lista de tipos de arquivo que o user quer proteger. Iremos aumentar essa lista de 12 para 100+ ou simplesmente a substituir por uma lista de filetypes que o user NÃO quer proteger.
+D- Making communication with the driver so you can choose the extensions you want to backup, the max size etc...
 
-E- Atualização dos arquivos backupados (atualmente se já há um arquivo com o mesmo nome, não é feito o backup nem atualização), feito caso a última modificação que o arquivo sofreu já passou de 1 minuto.
+E- Backup Syncro/Updating
 
-F- Código menos Hardcoded: atualmente o código possui alguns hardcodes, por exemplo o backup do Sacerdote ser feito somente na pasta C:\sacerdotebackupdir.
+F- Code has some hardcodes, like backuping only to "C:\sacerdotebackupdir".
 
-G- Integração com Interface Gráfica.
 
 ----------------------------------------------------
 
-3- Instalação e Uso das Tools
+3- INSTALL/USE (TRANSLATE)
 
 ---------------------------------------------------
 
